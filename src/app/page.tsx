@@ -93,14 +93,14 @@ export default function ProjectPage() {
               (window.location.href =
                 "https://alexei-torres-portfolio.netlify.app")
             }
-            className="cursor-pointer fixed top-5 w-auto h-auto z-[50] right-5 sm:right-10 bg-[#363F1F] text-white py-2 px-5 rounded-md font-medium"
+            className="cursor-pointer fixed top-5 w-auto h-auto z-[50] right-5 sm:right-10 bg-gray-700 text-white py-2 px-5 rounded-md font-medium"
           >
             Volver al portafolio
           </div>
           {/*MENU BUTTON*/}
           <h1
             /*style={{ textShadow: "1px 4px 8px #999999" }}*/
-            className="z-10 text-[50px] sm:text-[70px] md:text-[100px]"
+            className="z-10 text-[50px] sm:text-[70px] md:text-[100px] text-center pt-[60px]"
           >
             <span style={data.styles.titleCss}>{data.styles.title}</span>
             <span style={data.styles.title2Css}>
