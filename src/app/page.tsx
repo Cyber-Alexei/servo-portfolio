@@ -2,9 +2,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { projects, plants } from "@/data";
-import { useState, useEffect, lazy, useRef, Suspense } from "react";
-import DragHandleIcon from "@mui/icons-material/DragHandle";
-import CloseIcon from "@mui/icons-material/Close";
+import { useState, useEffect, lazy, Suspense } from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
 const Section4 = lazy(() => import("@/components/section4/section4"));
 
@@ -32,9 +30,6 @@ type projectType = {
 export default function ProjectPage() {
   // Params
   const project: string = "servo";
-
-  // Ref
-  const menu = useRef<HTMLDivElement | null>(null);
 
   // State
   const [smallOrWide, setSmallOrWide] = useState<string | null>(null);
