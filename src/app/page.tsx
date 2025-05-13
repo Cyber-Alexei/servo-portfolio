@@ -45,34 +45,6 @@ export default function ProjectPage() {
   const [randomNumbersPlants, setRandomNumbersPlants] = useState<
     number[] | null
   >(null);
-  // Icons state
-  const [icon1] = useState(
-    <DragHandleIcon className="noquitmenu" sx={{ fontSize: "30px" }} />,
-  );
-  const [icon2] = useState(
-    <CloseIcon className="noquitmenu" sx={{ fontSize: "28px" }} />,
-  );
-  const [currentIcon, setCurrentIcon] = useState(icon1);
-
-  // Functions
-  const showMenu = () => {
-    if (menu.current?.className.includes("no-show")) {
-      menu.current.className = menu.current.className.replace(
-        "no-show sm:left-[-50%] md:left-[-30%] lg:left-[-20%] left-[-80%]",
-        "show left-0",
-      );
-      setCurrentIcon(icon2);
-      return;
-    }
-    if (menu.current?.className.includes("show")) {
-      menu.current.className = menu.current.className.replace(
-        "show left-0",
-        "no-show sm:left-[-50%] md:left-[-30%] lg:left-[-20%] left-[-80%]",
-      );
-      setCurrentIcon(icon1);
-      return;
-    }
-  };
 
   // Effect
   useEffect(() => {
@@ -115,14 +87,6 @@ export default function ProjectPage() {
             target instanceof HTMLElement &&
             !target.classList.contains("noquitmenu")
           ) {
-            //------------------------ Close the menu when clicking in any other place/element
-            if (menu.current?.className.includes("show")) {
-              menu.current.className = menu.current.className.replace(
-                "show left-0",
-                "no-show sm:left-[-50%] md:left-[-30%] lg:left-[-20%] left-[-80%]",
-              );
-              setCurrentIcon(icon1);
-            }
           }
         }}
         className="relative flex flex-col items-center h-auto w-full overflow-hidden"
@@ -130,64 +94,15 @@ export default function ProjectPage() {
         <div className="w-full h-full flex flex-col items-center">
           {/*MENU BUTTON*/}
           <div
-            onClick={() => showMenu()}
-            className="cursor-pointer fixed top-5 w-auto h-auto z-[50] right-5 sm:right-10 bg-white rounded-md"
+            onClick={() =>
+              (window.location.href =
+                "https://alexei-torres-portfolio.netlify.app")
+            }
+            className="cursor-pointer fixed top-5 w-auto h-auto z-[50] right-5 sm:right-10 bg-[#363F1F] text-white py-2 px-5 rounded-md font-medium"
           >
-            {currentIcon}
+            Volver al portafolio
           </div>
           {/*MENU BUTTON*/}
-          {/*MENU MODAL*/}
-          <div
-            ref={menu}
-            className="noquitmenu no-show sm:left-[-50%] md:left-[-30%] lg:left-[-20%] left-[-80%] sm:w-[50%] md:w-[30%] lg:w-[20%] w-[80%] h-[100%] fixed top-0  z-[50] bg-[rgba(54,63,31,0.7)] transition-all duration-100"
-          >
-            <div className="flex flex-col text-white bg-[#363F1F] text-lg font-normal">
-              <div
-                onClick={() =>
-                  (window.location.href =
-                    "https://alexei-torres-portfolio.netlify.app")
-                }
-                className="cursor-pointer border-b border-solid border-black"
-                style={{
-                  /*backgroundColor: `${data.styles.titleCss.color}`*/
-                  backgroundColor: "#8b9339",
-                }}
-              >
-                <p className="w-full h-full py-4 pl-2 transition-all duration-100 hover:bg-[rgba(0,0,0,0.5)]">
-                  Home
-                </p>
-              </div>
-              {projects &&
-                Object.keys(projects).map((key, i) => (
-                  <div key={i}>
-                    {key !== project && (
-                      <div
-                        onClick={() => {
-                          if (key === "servo") {
-                            window.location.href =
-                              "https://alexei-torres-servo.netlify.app";
-                          }
-                          if (key === "wasppet") {
-                            window.location.href =
-                              "https://alexei-torres-wasppet.netlify.app";
-                          }
-                        }}
-                        style={{
-                          /*backgroundColor: `${data.styles.titleCss.color}`,*/
-                          backgroundColor: "#8b9339",
-                        }}
-                        className="cursor-pointer border-b border-solid border-black"
-                      >
-                        <p className="w-full h-full py-4 pl-2 transition-all duration-100 hover:bg-[rgba(0,0,0,0.5)]">
-                          {projects[key as keyof typeof projects].name}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                ))}
-            </div>
-          </div>
-          {/*MENU MODAL*/}
           <h1
             /*style={{ textShadow: "1px 4px 8px #999999" }}*/
             className="z-10 text-[50px] sm:text-[70px] md:text-[100px]"
